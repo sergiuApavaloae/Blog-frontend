@@ -1,0 +1,16 @@
+mat-card-title{
+  color:red;
+  font-size:40px
+}
+p {
+  font-family: Lato;
+  font-size: 40px;
+}
+.articol {
+  max-width: 75%;
+  margin: 4px
+}
+
+mat-card-subtitle{
+  font-size:20px
+}

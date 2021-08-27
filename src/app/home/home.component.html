@@ -1,0 +1,42 @@
+<head>
+  <title>Sergiu's Blog</title>
+</head>
+<!--<div style="background-image: url('assets/poza1_blog.jpg');">-->
+<h1 class="center">Welcome to Sergiu's Blog</h1>
+<button class="add" (click)="newArticle()" mat-stroked-button color="warn">Add Article</button>
+<p>Current articles:</p>
+
+<div *ngFor="let article of articles">
+  <mat-card class="articol">
+    <mat-card-header>
+      <mat-card-title>
+<!--        <a routerLink="/{{article.id}}">-->
+          {{ article.title }}
+<!--        </a>-->
+      </mat-card-title>
+
+      <!--    <div class="navbar-brand">-->
+      <!--      <a class="navbar-item">-->
+      <!--        <img src="assets/poza2_blog.png">-->
+      <!--      </a>-->
+      <!--    </div>-->
+      <mat-card-subtitle>
+        Author:
+        {{ article.author }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <button (click)="access(article.id)" mat-flat-button color="primary">View</button>
+      <button (click)="edit(article.id)" mat-flat-button color="warn">Edit</button>
+      <button (click)="deleteArticle(article.id)" mat-flat-button color="red">Delete Article</button>
+      <h3>Description:
+        {{ article.description }}
+      </h3>
+      <h3>Last change:
+        {{ article.createdAt || article.updatedAt}}
+      </h3>
+      <img *ngIf="article.image" mat-card-lg-image src="assets/{{article.image}}">
+    </mat-card-content>
+  </mat-card>
+</div>
+

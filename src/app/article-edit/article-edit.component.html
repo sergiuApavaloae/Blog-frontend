@@ -1,0 +1,23 @@
+<h2 *ngIf="article">Edit article: {{article.title}}</h2>
+<h2 *ngIf="!article">Hello! Post a new article:</h2>
+
+<div class="form-group col-5">
+  <form [formGroup]="form">
+    <label>Title</label>
+    <input type="text" formControlName="title" class="form-control">
+    <label>Author</label>
+    <input type="text" formControlName="author" class="form-control">
+    <label>Description</label>
+    <input type="text" formControlName="description" class="form-control">
+    <label>Text</label>
+    <textarea formControlName="text" rows="6" class="form-control"></textarea>
+    <input type='file' (change)="onSelectFile($event)">
+  </form>
+</div>
+<button *ngIf="!isNew" (click)="getValues()" mat-stroked-button color="primary">Old Values</button>
+<button *ngIf="!isNew" (click)="updateArticle()" mat-stroked-button color="primary">Save updates</button>
+<button *ngIf="isNew" (click)="postArticle()" mat-stroked-button color="primary">Post Article</button>
+<button (click)="back()" mat-stroked-button color="primary">Go to Home </button>
+
+
+

@@ -1,0 +1,35 @@
+mat-card-title{
+  color:red;
+  font-size:30px
+}
+p {
+  font-family: Lato;
+  font-size: 40px;
+}
+.articol {
+  background-color:antiquewhite;
+  max-width:75%;
+  margin: 4px
+}
+
+mat-card-subtitle{
+  font-size:20px
+}
+.titlu{
+  position: center;
+  font-size: 30px;
+  background-color:darkslategrey;
+
+}
+.center {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-family:"Leelawadee UI Semilight";
+}
+.add {
+  position: absolute;
+  top: 10%;
+}

@@ -1,0 +1,10 @@
+Replies:
+<div *ngFor="let reply of replies; let i = index" class="reply-list" >
+  <div *ngIf="reply.commentId === commentId">
+    <h5 matLine>{{reply.email}} </h5>
+    <p>Name: {{reply.name}}, Date: {{reply.postDate}}</p>
+    <p>{{reply.message}}</p>
+    <button mat-button mat-mini-fab (click)="onDeleteReply(reply.id)"><mat-icon>delete</mat-icon></button>
+    <mat-divider></mat-divider>
+  </div>
+</div>

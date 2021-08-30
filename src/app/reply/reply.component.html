@@ -1,5 +1,6 @@
 <app-reply-list [commentId]=cId [postId]=pId></app-reply-list>
-<div class="card">
+<mat-button-toggle (click)="replyToggle = !replyToggle">Reply</mat-button-toggle>
+<div *ngIf="replyToggle" class="card">
   <div class="card-header card-header-danger">
     <h1>Reply</h1>
   </div>

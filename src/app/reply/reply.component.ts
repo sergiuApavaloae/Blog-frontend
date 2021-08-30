@@ -14,6 +14,7 @@ export class ReplyComponent implements OnInit {
   @Input('postId') postId: number;
   @Input('replyId') replyId: string;
   replyForm: FormGroup;
+  replyToggle: boolean =false;
 
   constructor(
     private commentService:CommentService,
@@ -52,7 +53,6 @@ export class ReplyComponent implements OnInit {
       postId:this.postId,
       postDate: Date.now()
     }
-    console.log(submittedVal);
     this.commentService.addComment(submittedVal).subscribe((comm:Comment)=>{});
   }
 }

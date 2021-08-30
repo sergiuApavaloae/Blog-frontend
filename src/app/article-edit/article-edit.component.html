@@ -12,6 +12,8 @@
     <label>Text</label>
     <textarea formControlName="text" rows="6" class="form-control"></textarea>
     <input type='file' (change)="onSelectFile($event)">
+    <img *ngIf="imageUrl" mat-card-sm-image src="assets/{{imageUrl}}">
+<!--    <img *ngIf="article.image" mat-card-lg-image src="assets/{{article.image}}">-->
   </form>
 </div>
 <button *ngIf="!isNew" (click)="getValues()" mat-stroked-button color="primary">Old Values</button>

@@ -1,10 +1,15 @@
-Replies:
+<div class="reply">
 <div *ngFor="let reply of replies; let i = index" class="reply-list" >
   <div *ngIf="reply.commentId === commentId">
     <h5 matLine>{{reply.email}} </h5>
-    <p>Name: {{reply.name}}, Date: {{reply.postDate}}</p>
+    <p>Name: {{reply.name}}, Date: {{reply.postDate|date}}</p>
     <p>{{reply.message}}</p>
+    <mat-card-actions >
+      <mat-button-toggle (click)="togglePanel[reply.id] = !togglePanel[reply.id]">Reply/See replies</mat-button-toggle>
+      <app-reply-form [postId]="reply.postId"  [commentId]="reply.id" *ngIf="togglePanel[reply.id]"></app-reply-form>
+    </mat-card-actions>
     <button mat-button mat-mini-fab (click)="onDeleteReply(reply.id)"><mat-icon>delete</mat-icon></button>
     <mat-divider></mat-divider>
   </div>
+</div>
 </div>

@@ -39,6 +39,7 @@ export class ReplyListComponent implements OnInit, OnDestroy {
         this.replies = replyList;
         console.log('Replici:')
         console.log(this.replies);
+        console.log(this.togglePanel);
       });
   }
 

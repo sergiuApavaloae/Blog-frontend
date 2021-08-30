@@ -35,6 +35,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
       .subscribe((commentList: Comment[]) => {
         this.comments = commentList;
       });
+    console.log(this.togglePanel);
   }
 
   onDeleteComment(id:number) {

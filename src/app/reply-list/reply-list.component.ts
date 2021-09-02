@@ -37,9 +37,7 @@ export class ReplyListComponent implements OnInit, OnDestroy {
     this.replySub = this.commentService.getComments(this.postId)
       .subscribe((replyList: Comment[]) => {
         this.replies = replyList;
-        console.log('Replici:')
-        console.log(this.replies);
-        console.log(this.togglePanel);
+
       });
   }
 

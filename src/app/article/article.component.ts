@@ -19,10 +19,8 @@ export class ArticleComponent implements OnInit {
   public article : Article | undefined;
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
-
       this.apiService.readArticle(params['id']).subscribe((result: Article) => {
           this.article = result;
-
         }
       )
     });

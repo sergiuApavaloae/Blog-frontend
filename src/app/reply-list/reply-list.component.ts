@@ -13,7 +13,7 @@ import {CommentService} from "../comment/comment-service";
 export class ReplyListComponent implements OnInit, OnDestroy {
   @Input('commentId') commentId: number;
   @Input('postId') postId: number;
-  replies:Comment[];
+  @Input('replies') replies: Comment[];
   showReply = false;
   togglePanel: any = {};
   replySub: Subscription;
@@ -24,25 +24,22 @@ export class ReplyListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+     // this.commentService.refreshNeeded
+     //   .subscribe(()=>{this.getAllReplies()
+     //     }
+     //   );
 
-
-    this.commentService.refreshNeeded
-      .subscribe(()=>{this.getAllReplies()
-        }
-      );
-    this.getAllReplies()
   }
 
   getAllReplies(){
     this.replySub = this.commentService.getComments(this.postId)
       .subscribe((replyList: Comment[]) => {
-        this.replies = replyList;
-
-      });
+         this.replies = replyList;
+       });
   }
 
-  onDeleteReply(id:number) {
-    this.commentService.deleteComment(id, this.commentId).subscribe(()=>{});
+  onDeleteReply(id: number) {
+    this.commentService.deleteComment(id, this.commentId,this.replies).subscribe(()=>{});
   }
 
   onReply(){
@@ -50,7 +47,7 @@ export class ReplyListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.replySub.unsubscribe();
+    //this.replySub.unsubscribe();
   }
 
 

@@ -6,7 +6,7 @@ export interface Article{
   author:string;
   text:string;
   image:string;
-  createdAt:string;
-  updatedAt:string;
+  createdAt:number;
+  updatedAt:number;
 
 }

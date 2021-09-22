@@ -13,6 +13,9 @@ export class ReplyComponent implements OnInit {
   @Input('commentId') commentId: number;
   @Input('postId') postId: number;
   @Input('replyId') replyId: string;
+  @Input('comments') comments:Comment[];
+
+  @Output('')
   replyForm: FormGroup;
   replyToggle: boolean =false;
 
@@ -30,7 +33,9 @@ export class ReplyComponent implements OnInit {
       message: ['', Validators.required]
     });
   }
-
+  get getComments(){
+    return this.comments;
+  }
   get cId() {
     return this.commentId;
   }
@@ -49,7 +54,7 @@ export class ReplyComponent implements OnInit {
       name: this.replyForm.value.name,
       email: this.replyForm.value.email,
       message: this.replyForm.value.message,
-      commentId: this.commentId,
+      parentCommentId: this.commentId,
       postId:this.postId,
       postDate: Date.now()
     }

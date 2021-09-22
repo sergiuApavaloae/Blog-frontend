@@ -31,6 +31,7 @@ export class ArticleEditComponent implements OnInit {
       this.routeSub = this.route.params.subscribe(params => {
         this.apiService.readArticle(params['id']).subscribe((result: Article) => {
             this.article = result;
+            this.getValues();
           }, error => {
             this.isNew = true;
           }
@@ -57,8 +58,8 @@ export class ArticleEditComponent implements OnInit {
         description: this.form.value.description,
         text: this.form.value.text,
         image:this.imageUrl,
-        createdAt: '',
-        updatedAt: ''
+        createdAt: this.article.createdAt,
+        updatedAt: Date.now(),
       }
     ).subscribe(result => {
       this.back();
@@ -68,15 +69,15 @@ export class ArticleEditComponent implements OnInit {
   }
 
   async postArticle() {
-   await this.apiService.createArticles({
+    this.apiService.createArticles({
       id: 0,
       title: this.form.value.title,
       author: this.form.value.author,
       description: this.form.value.description,
       text: this.form.value.text,
       image: this.imageUrl,
-      createdAt: '',
-      updatedAt: ''
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     }).subscribe(res => {
       this.back();
     });
@@ -90,8 +91,8 @@ export class ArticleEditComponent implements OnInit {
         author: this.article.author,
         description: this.article.description,
         text: this.article.text,
-        createdAt: '',
-        updatedAt: ''
+        createdAt: this.article.createdAt,
+        updatedAt: this.article.updatedAt
       }
     )
     this.imageUrl=this.article.image;
@@ -101,7 +102,7 @@ export class ArticleEditComponent implements OnInit {
   onSelectFile(event:any) { // called each time file input changes
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
-      console.log(event.target.files[0].name);
+      //console.log(event.target.files[0].name);
       this.imageUrl=event.target.files[0].name;
       // reader.readAsDataURL(event.target.files[0]); // read file as data url
       //

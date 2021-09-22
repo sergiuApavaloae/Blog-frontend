@@ -1,4 +1,4 @@
-<app-reply-list [commentId]=cId [postId]=pId></app-reply-list>
+<app-reply-list [replies]="comments" [commentId]=cId [postId]=pId></app-reply-list>
 <mat-button-toggle (click)="replyToggle = !replyToggle">Reply</mat-button-toggle>
 <div *ngIf="replyToggle" class="card">
   <div class="card-header card-header-danger">

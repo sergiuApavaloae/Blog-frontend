@@ -20,6 +20,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import { MatInputModule } from '@angular/material/input';
 import { ReplyComponent } from './reply/reply.component';
 import { ReplyListComponent } from './reply-list/reply-list.component';
+import {AuthComponent} from "./auth/auth.component";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ReplyListComponent } from './reply-list/reply-list.component';
     CommentComponent,
     CommentListComponent,
     ReplyComponent,
-    ReplyListComponent
+    ReplyListComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { ReplyListComponent } from './reply-list/reply-list.component';
     MatIconModule,
     MatButtonToggleModule,
     MatDividerModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

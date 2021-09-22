@@ -1,3 +1,4 @@
+<div class="container">
 <button (click)="back()" mat-stroked-button color="primary">Back</button>
 
 <mat-card>
@@ -9,10 +10,11 @@
     <h5>{{article?.author}}</h5>
   </mat-card-subtitle>
   <mat-card-content>
-    <img *ngIf="article?.image" mat-card-lg-image src="assets/{{article?.image}}">
+    <img class="image" *ngIf="article?.image" mat-card-lg-image src="assets/{{article?.image}}">
     <p>{{article?.text}}</p>
   </mat-card-content>
 
 </mat-card>
 <app-comment></app-comment>
 <button (click)="back()" mat-stroked-button color="primary">Back</button>
+</div>

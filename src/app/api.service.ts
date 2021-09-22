@@ -21,9 +21,10 @@ export class ApiService {
   }
   Url=''
   public readArticle(id: string){
-    this.Url=this.API_SERVER+'/articles/';
-    this.Url+=id;
-    return this.httpClient.get<Article>(this.Url);
+    // this.Url=this.API_SERVER+'/articles/';
+    // this.Url+=id;
+    // return this.httpClient.get<Article>(this.Url);
+    return this.httpClient.get<Article>(`${this.API_SERVER}/articles/${id}`)
   }
   public createArticles(article: Article){
     return this.httpClient.post<Article>(`${this.API_SERVER}/articles`, article)

@@ -1,14 +1,15 @@
 <div *ngFor="let comment of comments; let i = index">
-  <div *ngIf="comment.commentId===0">
+  <div *ngIf="comment.parentCommentId===0">
     <h5 matLine> {{comment.name}} </h5>
-    <p>{{comment.postDate|date}}</p>
+    <p>{{comment.postDate|date:'medium'}}</p>
     <p>{{comment.message}}</p>
     <button mat-button mat-mini-fab (click)="onDeleteComment(comment.id)"><mat-icon>delete</mat-icon></button>
   </div>
-  <mat-card-actions *ngIf="comment.commentId===0">
+  <mat-card-actions *ngIf="comment.parentCommentId===0">
     <mat-button-toggle (click)="togglePanel[comment.id] = !togglePanel[comment.id]">Reply/See replies</mat-button-toggle>
-    <app-reply-form [postId]="comment.postId"  [commentId]="comment.id" *ngIf="togglePanel[comment.id]"></app-reply-form>
+    {{togglePanel | json}}
+    <app-reply-form  [postId]="comment.postId"   [commentId]="comment.id" [comments]="comments" *ngIf="togglePanel[comment.id]"></app-reply-form>
   </mat-card-actions>
-  <mat-divider *ngIf="comment.commentId===0"></mat-divider>
+  <mat-divider *ngIf="comment.parentCommentId===0"></mat-divider>
 </div>
 

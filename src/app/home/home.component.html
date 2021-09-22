@@ -3,9 +3,12 @@
 </head>
 <!--<div style="background-image: url('assets/poza1_blog.jpg');">-->
 <h1 class="center">Welcome to Sergiu's Blog</h1>
-<button class="add" (click)="newArticle()" mat-stroked-button color="warn">Add Article</button>
-<p>Current articles:</p>
-
+<div>
+  <button (click)="newArticle()" mat-stroked-button color="warn">Add Article</button>|
+  <button (click)="authenticate()" mat-stroked-button color="warn">Authenticate</button>
+</div>
+<p>HOME PAGE</p>
+<div class="main">
 <div *ngFor="let article of articles">
   <mat-card class="articol">
     <mat-card-header>
@@ -32,11 +35,11 @@
       <h3>Description:
         {{ article.description }}
       </h3>
-      <h3>Last change:
-        {{ article.createdAt || article.updatedAt}}
+      <h3>
+        Last update:{{article.updatedAt|date:'short'}}|||Created at:{{article.createdAt|date:'short'}}
       </h3>
-      <img *ngIf="article.image" mat-card-lg-image src="assets/{{article.image}}">
+      <img class="img" *ngIf="article.image" mat-card-lg-image src="assets/{{article.image}}">
     </mat-card-content>
   </mat-card>
 </div>
-
+</div>

@@ -2,8 +2,8 @@ export interface Comment{
   name: string,
   email: string,
   message: string,
-  id: number,
+  id?: number,
   postId:number,
-  commentId:number,
+  parentCommentId:number,
   postDate: number
 }

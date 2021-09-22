@@ -7,9 +7,15 @@ p {
   font-size: 40px;
 }
 .articol {
+  position: center;
   background-color:antiquewhite;
-  max-width:75%;
-  margin: 4px
+  width: 90%;
+  margin:auto;
+  margin-bottom: 4px;
+}
+.img{
+  position: center;
+  width:80%;
 }
 
 mat-card-subtitle{
@@ -32,4 +38,14 @@ mat-card-subtitle{
 .add {
   position: absolute;
   top: 10%;
+}
+.auth{
+  position: relative;
+  top:0%;
+}
+.main{
+  margin: auto;
+  width: 80%;
+  border: 3px solid green;
+  padding: 10px;
 }

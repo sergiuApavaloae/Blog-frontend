@@ -21,7 +21,7 @@ export class CommentService {
   public addComment(comment: Comment)
   {
     console.log(comment)
-    return this.httpClient.post<Comment>(`${this.API_SERVER}/comments/${comment.postId}`, comment)
+    return this.httpClient.post<Comment>(`${this.API_SERVER}/articles/${comment.postId}/comments`, comment)
       .pipe(
         tap(()=>{
           this._refreshNeeded.next();
@@ -29,11 +29,16 @@ export class CommentService {
       );
   }
   public getComments(postId:number){
-    return this.httpClient.get<Comment[]>(`${this.API_SERVER}/comments/${postId}`);
+    return this.httpClient.get<Comment[]>(`${this.API_SERVER}/articles/${postId}/comments`);
   }
 
-  public deleteComment(id:number,postId:number){
-    return this.httpClient.delete<Comment[]>(`${this.API_SERVER}/comments/${postId}/${id}`)
+  public deleteComment(id:number,postId:number,allComments:Comment[]){
+
+    for( let comm of allComments){
+      this.httpClient.delete<Comment[]>(`${this.API_SERVER}/articles/${postId}/comments/${comm.id}`)
+    }
+
+    return this.httpClient.delete<Comment[]>(`${this.API_SERVER}/articles/${postId}/comments/${id}`)
       .pipe(
         tap(()=>{
           this._refreshNeeded.next();

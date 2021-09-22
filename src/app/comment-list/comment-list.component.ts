@@ -22,8 +22,9 @@ export class CommentListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.commentService.refreshNeeded
-      .subscribe(()=>{this.getAllComments()
+    this.commentSub=this.commentService.refreshNeeded
+      .subscribe(()=>{
+        this.getAllComments()
         }
       );
     this.postId = this.route.snapshot.params.id;
@@ -39,13 +40,14 @@ export class CommentListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteComment(id:number) {
-   this.commentService.deleteComment(id, this.postId).subscribe(()=>{});
+   this.commentService.deleteComment(id, this.postId,this.comments).subscribe(()=>{});
   }
 
   onReply(){
     this.showReply = (!this.showReply) ? true : false;
   }
   ngOnDestroy() {
+    console.log('distrus')
     this.commentSub.unsubscribe();
   }
 }

@@ -13,13 +13,14 @@ import {Comment} from "../shared/comment";
 
 export class CommentComponent implements OnInit{
   private id: number;
-
   commentForm: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private commentService: CommentService,
     private route: ActivatedRoute,
-  private router:Router) {}
+    private router:Router
+  ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
@@ -35,17 +36,16 @@ export class CommentComponent implements OnInit{
   }
 
   onSubmit() {
-    const content = {
-      id:0,
+    const content:Comment = {
       name: this.commentForm.value.name,
       email: this.commentForm.value.email,
       message: this.commentForm.value.message,
       postId: this.id,
-      commentId:0,
+      parentCommentId:0,
       postDate: Date.now(),
 
     }
+    console.log(content)
     this.commentService.addComment(content).subscribe((comm:Comment)=>{});
-
   }
 }

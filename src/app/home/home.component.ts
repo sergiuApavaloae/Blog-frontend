@@ -31,19 +31,23 @@ export class HomeComponent implements OnInit {
   }
   access(id:number)
     {
-      const url='/'+id;
+      const url='articles/'+id;
 
       this.router.navigateByUrl(url);
   }
   edit(id:number)
   {
-    const url='/edit/'+id;
+    const url='articles/'+id+'/edit';
 
     this.router.navigateByUrl(url);
   }
   newArticle()
   {
-    this.router.navigateByUrl('/new')
+    this.router.navigateByUrl('new')
+  }
+  authenticate()
+  {
+    this.router.navigateByUrl('auth')
   }
   deleteArticle(id:number){
     this.apiService.deleteArticles(id).subscribe(
